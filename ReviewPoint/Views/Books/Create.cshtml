@@ -1,0 +1,71 @@
+﻿@model ReviewPoint.Business.ViewModels.BookViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pages" class="control-label"></label>
+                <input asp-for="Pages" class="form-control" />
+                <span asp-validation-for="Pages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Front Cover</label>
+                <input asp-for="FrontCoverImageUrl" class="form-control" />
+                <span asp-validation-for="FrontCoverImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <img id="ImagePreview" style="width:200px;height:200px;visibility: hidden" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Genre</label>
+                <select asp-for="GenreId" class="form-control" asp-items="ViewBag.GenreId"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Author</label>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        let output = document.getElementById('ImagePreview');
+        $(document).ready(function () {
+            output.src = $('#FrontCoverImageUrl').val();
+        })
+        $('#FrontCoverImageUrl').on("focus", () => {
+            output.style.visibility = "visible";
+        })
+        $("#FrontCoverImageUrl").on("change", function () {
+            output.src = $(this).val();
+        })
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

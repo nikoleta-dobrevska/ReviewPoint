@@ -1,0 +1,55 @@
+﻿@model ReviewPoint.Business.ViewModels.ReviewViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h1>Edit</h1>
+
+<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Book</label>
+                <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId"></select>
+                <span asp-validation-for="BookId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        var output = document.getElementById('ImagePreview');
+        $(document).ready(function () {
+            output.src = $('#FrontCoverImageUrl').val();
+        })
+        $("#FrontCoverImageUrl").on("change", function () {
+            output.src = $(this).val();
+        })
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
