@@ -18,7 +18,6 @@ namespace ReviewPoint.Entities
         public string Title { get; set; }
         [Required]
         public int Pages { get; set; }
-        [Required]
         public DateTime DateOfPublishing { get; set;}
         [Required]
         public string ISBN { get; set; }
