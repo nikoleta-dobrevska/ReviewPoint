@@ -13,8 +13,9 @@ namespace ReviewPoint.Entities
         {
             this.Timestamp = DateTime.Now;
         }
-
+        [Required]
         public string Content { get; set; }
+        [Required]
         public int Grade { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }

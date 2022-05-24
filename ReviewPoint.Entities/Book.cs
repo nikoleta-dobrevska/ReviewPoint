@@ -14,10 +14,15 @@ namespace ReviewPoint.Entities
             this.DateOfPublishing = DateTime.Now;
         }
 
+        [Required]
         public string Title { get; set; }
+        [Required]
         public int Pages { get; set; }
+        [Required]
         public DateTime DateOfPublishing { get; set;}
+        [Required]
         public string ISBN { get; set; }
+        [Required]
         public string FrontCoverImageUrl { get; set; }
         public Guid GenreId { get; set; }
         public Genre Genre { get; set; }
