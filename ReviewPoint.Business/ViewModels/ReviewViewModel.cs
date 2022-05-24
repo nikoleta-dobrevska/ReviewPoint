@@ -10,6 +10,11 @@ namespace ReviewPoint.Business.ViewModels
 {
     public class ReviewViewModel
     {
+        public ReviewViewModel()
+        {
+            this.Timestamp = DateTime.Now;
+        }
+
         public Guid Id { get; set; }
         [Required]
         public string Content { get; set; }
