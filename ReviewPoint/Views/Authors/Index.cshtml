@@ -10,9 +10,14 @@
     </div>
 }
 <h1>Authors</h1>
-<p>
-    <a asp-action="Create">Create a new author</a>
-</p>
+
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        <a asp-action="Create">Create a new author</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>

@@ -10,9 +10,14 @@
     </div>
 }
 <h1>Genres</h1>
-<p>
-    <a asp-action="Create">Create a new genre</a>
-</p>
+
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        <a asp-action="Create">Create a new genre</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
